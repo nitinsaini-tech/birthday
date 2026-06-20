@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Shipra ❤️</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#84fab0,#8fd3f4);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    width:85%;
+    max-width:900px;
+    z-index:100;
+}
+
+h1{
+    color:white;
+    font-size:4rem;
+    text-shadow:0 0 15px white;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px #fff; }
+    to{ text-shadow:0 0 30px yellow,0 0 60px pink; }
+}
+
+button{
+    padding:15px 30px;
+    border:none;
+    border-radius:50px;
+    font-size:20px;
+    cursor:pointer;
+    background:white;
+    color:#ff4081;
+    font-weight:bold;
+    box-shadow:0 0 20px rgba(255,255,255,.6);
+}
+
+.message-box{
+    display:none;
+    margin-top:25px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    color:white;
+    padding:25px;
+    border-radius:20px;
+    font-size:22px;
+    line-height:1.8;
+}
+
+.balloon{
+    position:absolute;
+    width:60px;
+    height:80px;
+    border-radius:50%;
+    bottom:-100px;
+    animation:float linear infinite;
+}
+
+.balloon::after{
+    content:'';
+    position:absolute;
+    width:2px;
+    height:60px;
+    background:white;
+    left:29px;
+    top:80px;
+}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-120vh);}
+}
+
+.heart{
+    position:absolute;
+    color:red;
+    font-size:25px;
+    animation:heartMove 8s linear forwards;
+}
+
+@keyframes heartMove{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>🎂 Happy Birthday Shipra ❤️</h1>
+
+<button onclick="showMessage()">🎁 Open Your Surprise</button>
+
+<div class="message-box" id="msg"></div>
+</div>
+
+<script>
+
+const message = `
+Dear Shipra ❤️,
+
+Happy Birthday!
+
+📚 Every late night, every revision, every sacrifice and every challenge is taking you closer to your dream.
+
+💪 I know exam preparation is not easy, but I truly believe this is the last big struggle before your success.
+
+✨ One day you will look back and realize that these difficult days were preparing you for something amazing.
+
+🌟 Never doubt yourself. You are stronger, smarter and more capable than you think.
+
+🎯 Success is waiting for you. Just keep moving forward.
+
+❤️ I am proud of your dedication, your hard work and your courage.
+
+🎉 Happy Birthday Shipra 🎉
+
+May this year bring happiness, confidence, success and everything you deserve.
+
+With Love,
+
+❤️ Nitin ❤️
+`;
+
+function showMessage(){
+
+    document.getElementById("msg").style.display="block";
+
+    let i=0;
+    let txt="";
+
+    let interval=setInterval(()=>{
+        txt += message.charAt(i);
+        document.getElementById("msg").innerHTML =
+        txt.replace(/\n/g,"<br>");
+        i++;
+
+        if(i>=message.length){
+            clearInterval(interval);
+        }
+    },35);
+}
+
+// Balloons
+const colors=[
+'#ff4d4d',
+'#4da6ff',
+'#66ff66',
+'#ffff66',
+'#ff66cc',
+'#ff9933'
+];
+
+function createBalloon(){
+
+let balloon=document.createElement('div');
+balloon.classList.add('balloon');
+
+balloon.style.background=
+colors[Math.floor(Math.random()*colors.length)];
+
+balloon.style.left=
+Math.random()*100+'vw';
+
+balloon.style.animationDuration=
+(8+Math.random()*8)+'s';
+
+document.body.appendChild(balloon);
+
+setTimeout(()=>{
+balloon.remove();
+},16000);
+}
+
+setInterval(createBalloon,400);
+
+// Hearts
+function createHeart(){
+
+let heart=document.createElement('div');
+
+heart.classList.add('heart');
+
+heart.innerHTML='❤️';
+
+heart.style.left=
+Math.random()*100+'vw';
+
+heart.style.fontSize=
+(20+Math.random()*25)+'px';
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
